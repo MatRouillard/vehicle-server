@@ -1,17 +1,18 @@
 .PHONY: all
 all: clean dist build
 
-.PHONY: dist
-dist:
-	mkdir -p ./dist
-
 .PHONY: clean
 clean:
 	rm -r -f ./dist
 
+.PHONY: dist
+dist:
+	mkdir -p ./dist
+
 .PHONY: build
 build:
 	go build -o ./dist/server ./cmd/server/
+
 
 DB_CONTAINER_NAME=vehicle-server-dev
 POSTGRES_USER=vehicle-server
