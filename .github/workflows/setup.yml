@@ -1,4 +1,4 @@
-name: Bonjour
+name: Vehicle Server - Mathis ROUILLARD
 on:
   - push
 jobs:
