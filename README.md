@@ -27,3 +27,6 @@ curl localhost:8080/vehicles\?latitude=34.2\&longitude=23.4\&limit=10
 ```bash
 curl --request DELETE localhost:8080/vehicles/${VEHICLE_ID}
 ```
+
+# Test pour l'exo
+Ceci est un test pour l'exercice
