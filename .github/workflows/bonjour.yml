@@ -5,6 +5,7 @@ jobs:
   dire_bonjour:
     container:
       image: ghcr.io/cicd-lectures/gitpod:latest
+      options: --user=root
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
