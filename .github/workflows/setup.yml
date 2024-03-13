@@ -36,7 +36,7 @@ jobs:
         if: contains('refs/heads/main', github.ref)
         with:
           username: mathis.rouillard@ensg.eu
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKER_TOKEN }}
       - name: Push if on `main` branch
         if: contains('refs/heads/main', github.ref)
         run: make release TAG="${{github.ref_name}}"
