@@ -1,5 +1,8 @@
+IMAGE?=mathisrouillard/vehicle-server
+TAG?=dev
+
 .PHONY: all
-all: clean dist build
+all: clean unit_test integration_test build package
 
 .PHONY: clean
 clean:
@@ -22,8 +25,7 @@ unit_test:
 integration_test:
 	go test -v -count=1 --tags=integration ./app
 
-
-DB_CONTAINER_NAME=vehicle-server-devgo
+DB_CONTAINER_NAME=vehicle-server-dev
 POSTGRES_USER=vehicle-server
 POSTGRES_PASSWORD=secret
 POSTGRES_DB=vehicle-server
@@ -50,3 +52,7 @@ dev_db:
 .PHONY: stop_dev_db
 stop_dev_db:
 	docker container stop $(DB_CONTAINER_NAME)
+
+.PHONY: package
+package:
+	docker image build -t $(IMAGE):$(TAG) .
