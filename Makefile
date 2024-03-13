@@ -4,10 +4,6 @@ TAG?=dev
 .PHONY: all
 all: clean unit_test integration_test build package
 
-.PHONY: dist
-dist:
-	mkdir -p ./dist
-
 .PHONY: clean
 clean:
 	rm -r -f ./dist
@@ -19,6 +15,15 @@ dist:
 .PHONY: build
 build:
 	go build -o ./dist/server ./cmd/server/
+
+
+.PHONY: unit_test
+unit_test:
+	go test -v -cover ./...
+
+.PHONY: integration_test
+integration_test:
+	go test -v -count=1 --tags=integration ./app
 
 DB_CONTAINER_NAME=vehicle-server-dev
 POSTGRES_USER=vehicle-server
