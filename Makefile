@@ -1,8 +1,9 @@
 IMAGE?=mathisrouillard/vehicle-server
 TAG?=dev
+TAG_MESSAGE?=message
 
 .PHONY: all
-all: clean unit_test integration_test build package
+all: clean dist unit_test integration_test build package release
 
 .PHONY: clean
 clean:
@@ -15,7 +16,6 @@ dist:
 .PHONY: build
 build:
 	go build -o ./dist/server ./cmd/server/
-
 
 .PHONY: unit_test
 unit_test:
@@ -56,3 +56,7 @@ stop_dev_db:
 .PHONY: package
 package:
 	docker image build -t $(IMAGE):$(TAG) .
+
+PHONY: release
+release:
+	docker push $(IMAGE):$(TAG)
