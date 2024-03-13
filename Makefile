@@ -1,4 +1,4 @@
-IMAGE?=MatRouillard/vehicle-server
+IMAGE?=mathisrouillard/vehicle-server
 TAG?=dev
 
 .PHONY: all
