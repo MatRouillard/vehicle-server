@@ -14,6 +14,11 @@ build:
 	go build -o ./dist/server ./cmd/server/
 
 
+.PHONY: unit_test
+unit_test:
+	go test -v -cover ./..
+
+
 DB_CONTAINER_NAME=vehicle-server-dev
 POSTGRES_USER=vehicle-server
 POSTGRES_PASSWORD=secret
