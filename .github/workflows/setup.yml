@@ -1,18 +1,24 @@
-name: Vehicle Server - Mathis ROUILLARD
+name: Vehicle Server CI
 on:
   - push
+  - pull_request
 jobs:
-  setup:
+  ci:
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout git
-      uses: actions/checkout@v4
-    - name: Setup Go
-      uses: actions/setup-go@v5
-      id: read
-      with:
-        go-version-file: 'go.mod'
-    - name: Check Go Version
-      run: go version
-    - name: Build application
-      run: make build
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: './go.mod'
+      - name: Check Go Version
+        run: go version
+      - name: Build application
+        run: make all
+      - name: List dist output
+        run: ls dist/
+      - name: Unit Test
+        run: make unit_test
+      - name: Integration Test
+        run: make integration_test
